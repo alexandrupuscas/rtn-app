@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/bridge', function() {
+Route::get('/bridge', ['middleware' => 'cors'], function() {
     $pusher = App::make('pusher');
 
     $pusher->trigger( 'test-channel',
@@ -27,6 +27,6 @@ Route::get('/bridge', function() {
     return view('welcome');
 });
 
-Route::get('notifications', 'NotificationController@getIndex');
+Route::get('notifications', ['middleware' => 'cors'], 'NotificationController@getIndex');
 
-Route::post('notifications/notify', 'NotificationController@postNotify');
+Route::post('notifications/notify', ['middleware' => 'cors'] , 'NotificationController@postNotify');
