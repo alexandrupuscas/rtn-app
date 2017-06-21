@@ -13,11 +13,11 @@
 
 use Illuminate\Support\Facades\App;
 
-Route::get('/', function () {
+Route::middleware('cors')->get('/', function () {
     return view('welcome');
 });
 
-Route::get('/bridge', ['middleware' => 'cors', function() {
+Route::middleware('cors')->get('/bridge', function() {
     $pusher = App::make('pusher');
 
     $pusher->trigger( 'test-channel',
@@ -25,8 +25,8 @@ Route::get('/bridge', ['middleware' => 'cors', function() {
         array('text' => 'Testing PUSHER!'));
 
     return view('welcome');
-}]);
+});
 
-Route::get('notifications', array('middleware' => 'cors', 'uses'=>'NotificationController@getIndex'));
+Route::middleware('cors')->get('notifications', 'NotificationController@getIndex');
 
-Route::post('notifications/notify', array('middleware' => 'cors', 'uses'=>'NotificationController@postNotify'));
+Route::middleware('cors')->post('notifications/notify', 'NotificationController@postNotify');
