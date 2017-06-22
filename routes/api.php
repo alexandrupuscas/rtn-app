@@ -25,3 +25,13 @@ Route::get('names', function()
         3 => "Steven"
     );
 });
+
+Route::get('names/{id}', function($id)
+{
+    $names = array(
+        1 => "John",
+        2 => "Mary",
+        3 => "Steven"
+    );
+    return array($id => $names[$id]);
+});
