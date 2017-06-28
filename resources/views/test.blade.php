@@ -5,7 +5,7 @@
 @stop
 
 @section('footer')
-    <script src="http://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
     <script>
         //var socket = io('http://localhost:3000');
         var socket = io('http://192.168.10.15:3000');
